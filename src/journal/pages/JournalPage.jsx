@@ -1,11 +1,14 @@
 
-import { Typography } from "@mui/material"
+import { CustomIconButton } from "../components";
+import { JournalLayout } from "../layout/JournalLayout";
+import { NoteView } from "../views";
 
 export const JournalPage = () => {
   return (
-    <>
-      <Typography variant="h1">JournalPage</Typography>
-      
-    </>
+    <JournalLayout>
+      {/* <NotingSelectedView /> */}
+      <NoteView />
+      <CustomIconButton />
+    </JournalLayout>
   );
-}
+};
