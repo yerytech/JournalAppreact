@@ -8,7 +8,10 @@ export const RegisterPage = () => {
     <AuthLayout title="Register">
       <form>
         <Grid2 container>
-          <Grid2 item size={{ xs: 12, md: 20 }} sx={{ mt: 2 }}>
+          <Grid2
+            size={{ xs: 12, md: 20 }}
+            sx={{ mt: 2 }}
+          >
             <TextField
               label="User"
               type="text"
@@ -16,7 +19,10 @@ export const RegisterPage = () => {
               fullWidth
             />
           </Grid2>
-          <Grid2 item size={{ xs: 12, md: 20 }} sx={{ mt: 2 }}>
+          <Grid2
+            size={{ xs: 12, md: 20 }}
+            sx={{ mt: 2 }}
+          >
             <TextField
               label="Email"
               type="email"
@@ -24,7 +30,10 @@ export const RegisterPage = () => {
               fullWidth
             />
           </Grid2>
-          <Grid2 item size={{ xs: 12, md: 20 }} sx={{ mt: 2 }}>
+          <Grid2
+            size={{ xs: 12, md: 20 }}
+            sx={{ mt: 2 }}
+          >
             <TextField
               label="Password"
               type="password"
@@ -32,16 +41,32 @@ export const RegisterPage = () => {
               fullWidth
             />
           </Grid2>
-          <Grid2 container spacing={1} sx={{ mb: 1, mt: 1 }} size={{ xs: 12 }}>
-            <Grid2 item size={{ xs: 12, sm: 12 }}>
-              <Button variant="contained" fullWidth>
+          <Grid2
+            container
+            spacing={1}
+            sx={{ mb: 1, mt: 1 }}
+            size={{ xs: 12 }}
+          >
+            <Grid2 size={{ xs: 12, sm: 12 }}>
+              <Button
+                variant="contained"
+                fullWidth
+              >
                 Registrar
               </Button>
             </Grid2>
           </Grid2>
         </Grid2>
-        <Grid2 container direction="row" justifyContent="flex-end">
-          <Link component={RouterLink} color="inherit" to="/auth/login">
+        <Grid2
+          container
+          direction="row"
+          justifyContent="flex-end"
+        >
+          <Link
+            component={RouterLink}
+            color="inherit"
+            to="/auth/login"
+          >
             Ya tienes una cuenta?
           </Link>
         </Grid2>
