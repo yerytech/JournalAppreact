@@ -13,8 +13,10 @@ import {
   Typography,
 } from "@mui/material";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
 export const SideBar = ({ drawerWidth = 240 }) => {
+  const { displayName } = useSelector((state) => state.auth);
   return (
     <Box
       component="nav"
@@ -29,19 +31,28 @@ export const SideBar = ({ drawerWidth = 240 }) => {
         }}
       >
         <Toolbar>
-          <Typography variant="h6" noWrap>
-            yerytech
+          <Typography
+            variant="h6"
+            noWrap
+          >
+            {displayName}
           </Typography>
         </Toolbar>
         <Divider />
 
         <List>
           {["Enero", "Febrero", "mMrzo ", "Abril"].map((text) => (
-            <ListItem key={text} disablePadding>
+            <ListItem
+              key={text}
+              disablePadding
+            >
               <ListItemButton>
                 <ListItemIcon>
                   <TurnedInNot />
-                  <Grid2 container direction="column">
+                  <Grid2
+                    container
+                    direction="column"
+                  >
                     <ListItemText primary={text} />
                     <ListItemText secondary={"una cosa explendorosa"} />
                   </Grid2>

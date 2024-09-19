@@ -1,33 +1,51 @@
 import { Link as RouterLink } from "react-router-dom";
 import { Google, } from "@mui/icons-material";
-import { Button, Grid2, TextField, Typography, Link } from "@mui/material";
+import {
+  Button,
+  Grid2,
+  TextField,
+  Typography,
+  Link,
+  Alert,
+} from "@mui/material";
 import { AuthLayout } from "../layout/AuthLayout";
 import { useForm } from "../../hooks";
-import { useDispatch } from "react-redux";
-import { checkingAutentication, startGoogleSingIn } from "../../store/auth";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  checkingAutentication,
+  startGoogleSingIn,
+  startLoginEmailPassword,
+} from "../../store/auth";
+import { useMemo } from "react";
 
 export const LoginPage = () => {
+  const { status, errorMessage } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const { email, password, onInputChange } = useForm({
-    email: "yery@gmail.com",
-    password: "123456",
+    email: "",
+    password: "",
   });
-
+  const isAuthenticating = useMemo(() => status === "checking", [status]);
   const onSubmit = (e) => {
     e.preventDefault();
 
-    console.log({ email, password });
     dispatch(checkingAutentication());
   };
   const onGoogleSingIn = () => {
     console.log("Google singin");
     dispatch(startGoogleSingIn());
   };
+  const onEmailPasswordSingIn = () => {
+    dispatch(startLoginEmailPassword({ email, password }));
+  };
 
   return (
     <AuthLayout title="Login">
-      <form onSubmit={onSubmit}>
+      <form
+        onSubmit={onSubmit}
+        className="animate__bounceIn"
+      >
         <Grid2 container>
           <Grid2
             size={{ xs: 12, md: 20 }}
@@ -57,14 +75,23 @@ export const LoginPage = () => {
               fullWidth
             />
           </Grid2>
+
           <Grid2
             container
             spacing={1}
             sx={{ mb: 1, mt: 1 }}
             size={{ xs: 12 }}
           >
+            <Grid2
+              display={errorMessage ? "" : "none"}
+              size={{ xs: 12, sm: 12 }}
+            >
+              <Alert severity="error">{errorMessage}</Alert>
+            </Grid2>
             <Grid2 size={{ xs: 12, sm: 6 }}>
               <Button
+                onClick={onEmailPasswordSingIn}
+                disabled={isAuthenticating}
                 type="submit"
                 variant="contained"
                 fullWidth
@@ -72,9 +99,9 @@ export const LoginPage = () => {
                 Login
               </Button>
             </Grid2>
-
             <Grid2 size={{ xs: 12, sm: 6 }}>
               <Button
+                disabled={isAuthenticating}
                 onClick={onGoogleSingIn}
                 variant="contained"
                 fullWidth

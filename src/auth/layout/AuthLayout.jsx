@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 export const AuthLayout = ({ children, title }) => {
   return (
     <Grid2
+      className="animate__fadeIn"
       container
       spacing={0}
       direction="column"

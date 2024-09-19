@@ -5,6 +5,7 @@ import { ImageGallery } from "../components";
 export const NoteView = () => {
   return (
     <Grid
+      className="animate__fadeIn"
       container
       direction="row"
       justifyContent="space-between"
@@ -12,12 +13,18 @@ export const NoteView = () => {
       sx={{ mb: 1 }}
     >
       <Grid item>
-        <Typography fontSize={39} fontWeight="light">
+        <Typography
+          fontSize={39}
+          fontWeight="light"
+        >
           2 de septiembre 2024
         </Typography>
       </Grid>
       <Grid item>
-        <Button color="primary" sx={{ padding: 2 }}>
+        <Button
+          color="primary"
+          sx={{ padding: 2 }}
+        >
           <SaveOutlined sx={{ fontSize: 30, mr: 1 }} />
           Guardar
         </Button>
