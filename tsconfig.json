@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "checkJs": true,
+    "outDir": "./dist", // Opcional, especifica una carpeta para la salida compilada
+    "noEmit": true // Evita que TypeScript emita archivos `.js`
+    // otras configuraciones que necesites
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.js"]
+}

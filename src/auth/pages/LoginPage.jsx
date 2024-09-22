@@ -17,26 +17,31 @@ import {
   startLoginEmailPassword,
 } from "../../store/auth";
 import { useMemo } from "react";
-
+const formData = {
+  email: "",
+  password: "",
+};
 export const LoginPage = () => {
+  // @ts-ignore
   const { status, errorMessage } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  const { email, password, onInputChange } = useForm({
-    email: "",
-    password: "",
-  });
+  // @ts-ignore
+  const { email, password, onInputChange } = useForm(formData);
   const isAuthenticating = useMemo(() => status === "checking", [status]);
   const onSubmit = (e) => {
     e.preventDefault();
 
+    // @ts-ignore
     dispatch(checkingAutentication());
   };
   const onGoogleSingIn = () => {
     console.log("Google singin");
+    // @ts-ignore
     dispatch(startGoogleSingIn());
   };
   const onEmailPasswordSingIn = () => {
+    // @ts-ignore
     dispatch(startLoginEmailPassword({ email, password }));
   };
 

@@ -16,11 +16,14 @@ export const NotingSelectedView = () => {
         borderRadius: 3,
       }}
     >
-      <Grid2 item size={{ xs: 12 }}>
+      <Grid2 size={{ xs: 12 }}>
         <StarRateOutlined sx={{ fontSize: 100, color: "white" }} />
       </Grid2>
-      <Grid2 item size={{ xs: 12 }}>
-        <Typography color="white" variant="h5">
+      <Grid2 size={{ xs: 12 }}>
+        <Typography
+          color="white"
+          variant="h5"
+        >
           Selecciona o crea una nota
         </Typography>
       </Grid2>

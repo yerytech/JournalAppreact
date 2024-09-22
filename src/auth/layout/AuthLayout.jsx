@@ -1,4 +1,5 @@
 import { Grid2, Typography } from "@mui/material";
+// @ts-ignore
 import PropTypes from "prop-types";
 export const AuthLayout = ({ children, title }) => {
   return (
@@ -13,7 +14,6 @@ export const AuthLayout = ({ children, title }) => {
     >
       <Grid2
         className="box-shadow"
-        xs={3}
         sx={{
           width: { md: 460 },
           backgroundColor: "white",

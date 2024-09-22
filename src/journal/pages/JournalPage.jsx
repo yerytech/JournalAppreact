@@ -1,13 +1,17 @@
 
+import { useSelector } from "react-redux";
 import { CustomIconButton } from "../components";
 import { JournalLayout } from "../layout/JournalLayout";
-import { NoteView } from "../views";
+import { NoteView, NotingSelectedView } from "../views";
 
 export const JournalPage = () => {
+  // @ts-ignore
+  const { active } = useSelector((state) => state.journal);
+
   return (
     <JournalLayout>
-      {/* <NotingSelectedView /> */}
-      <NoteView />
+      {active ? <NoteView /> : <NotingSelectedView />}
+
       <CustomIconButton />
     </JournalLayout>
   );

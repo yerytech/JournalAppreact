@@ -1,4 +1,5 @@
 import { Box, Toolbar } from "@mui/material";
+// @ts-ignore
 import PropTypes from "prop-types";
 import { NavBar, SideBar } from "../components";
 

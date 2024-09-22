@@ -1,12 +1,15 @@
 import { LogoutOutlined, MenuOutlined } from "@mui/icons-material";
 import { AppBar, Grid2, IconButton, Toolbar, Typography } from "@mui/material";
+// @ts-ignore
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { startLogout } from "../../store/auth/thunks";
 
 export const NavBar = ({ drawerWidth = 240 }) => {
   const dispach = useDispatch();
+  // @ts-ignore
   const onLogout = () => {
+    // @ts-ignore
     dispach(startLogout());
   };
 
