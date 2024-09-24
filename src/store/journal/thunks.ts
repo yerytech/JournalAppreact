@@ -11,13 +11,14 @@ import {
   updateNote,
 } from "./journalSlice";
 import { fileUpload, loadNotes } from "../../helpers";
+import { string } from "prop-types";
 
 interface NewNoteProps {
   id?: string;
   title: string;
   body: string;
   date: number;
-  imageUrls: [];
+  imageUrls: string[] | null;
 }
 
 export const startNewNote: Function = () => {
@@ -29,7 +30,7 @@ export const startNewNote: Function = () => {
       title: "",
       body: "",
       date: new Date().getTime(),
-      imageUrls: [],
+      imageUrls: null,
     };
 
     const newDoc = doc(collection(FirebaseDB, `${uid}/journal/notas`));
@@ -54,12 +55,12 @@ export const startSaveNote: Function = () => {
     dispatch(setSaving());
 
     const { uid } = getState().auth;
-    const { active: note } = getState().journal;
-    const noteToFireStore = { ...note };
+    const { active } = getState().journal;
+    const noteToFireStore = { ...active };
     delete noteToFireStore.id;
-    const docRef = doc(FirebaseDB, `${uid}/journal/notas/${note.id}`);
+    const docRef = doc(FirebaseDB, `${uid}/journal/notas/${active.id}`);
     await setDoc(docRef, noteToFireStore, { merge: true });
-    dispatch(updateNote(note));
+    dispatch(updateNote(active));
   };
 };
 
