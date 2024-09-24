@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { object } from "prop-types";
+
 
 interface Active {
   id: string;
   title: string;
   body: string;
   date: number;
-  imageUrl: string[];
+  imageUrls: string[];
 }
 
 interface JornalTypes {
   isSaving: boolean;
   messageSaved: string;
-  notes: any;
+  notes: Active[];
   active: Active | null;
 }
 
@@ -58,11 +58,31 @@ export const journalSlice = createSlice({
 
       state.messageSaved = `${action.payload.title}, updated`;
     },
-    deleteNoteById: (state, action) => {},
+
+    setPhotoToActiveNotes: (state, action) => {
+      if (!state.active.imageUrls) {
+        state.active.imageUrls = [];
+      }
+      state.active.imageUrls = [...state.active.imageUrls, ...action.payload];
+      state.isSaving = false;
+    },
+
+    clearNoteLogout: (state) => {
+      state.isSaving = false;
+      state.messageSaved = "";
+      state.notes = [];
+      state.active = null;
+    },
+    deleteNoteById: (state, action) => {
+      state.active = null;
+      state.notes = state.notes.filter((note) => note.id !== action.payload);
+    },
   },
 });
 
 export const {
+  clearNoteLogout,
+  setPhotoToActiveNotes,
   savingNewNote,
   addNewEmptyNote,
   setActiveNote,

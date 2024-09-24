@@ -6,10 +6,12 @@ import {
   singInWithGoogle,
 } from "../../firebase/providers";
 import { chekingCredentials, logaut, login } from "./authSlice";
+import { clearNoteLogout } from "../journal";
 
 export const checkingAutentication = (email, password) => {
   return async (dispatch) => {
     dispatch(chekingCredentials());
+    // @ts-ignore
     const result = signInWithEmailAndPassword(email, password);
     console.log(result);
   };
@@ -53,6 +55,7 @@ export const startLoginEmailPassword = ({ email, password }) => {
 export const startLogout = () => {
   return async (dispatch) => {
     await logoutFirebase();
-    dispatch(logaut({}));
+    dispatch(clearNoteLogout());
+    dispatch(logaut());
   };
 };
