@@ -150,7 +150,7 @@ export const NoteView = () => {
         </Button>
       </Grid2>
 
-      <ImageGallery images={active.imageUrls} />
+      <ImageGallery />
     </Grid2>
   );
 };

@@ -60,9 +60,11 @@ export const journalSlice = createSlice({
     },
 
     setPhotoToActiveNotes: (state, action) => {
-      if (!state.active.imageUrls) {
-        state.active.imageUrls = [];
-      }
+       if (!state.active) return;
+
+       if (!state.active.imageUrls) {
+         state.active.imageUrls = [];
+       }
       state.active.imageUrls = [...state.active.imageUrls, ...action.payload];
       state.isSaving = false;
     },
