@@ -1,4 +1,12 @@
-import { Box, Divider, Drawer, List, Toolbar, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  Divider,
+  Drawer,
+  List,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 // @ts-ignore
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
@@ -12,7 +20,10 @@ export const SideBar = ({ drawerWidth = 240 }) => {
   return (
     <Box
       component="nav"
-      sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+      sx={{
+        width: { sm: drawerWidth },
+        flexShrink: { sm: 0 },
+      }}
     >
       <Drawer
         variant="permanent"
@@ -22,18 +33,21 @@ export const SideBar = ({ drawerWidth = 240 }) => {
           "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
         }}
       >
-        <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-          >
-            {displayName}
-          </Typography>
-        </Toolbar>
+        <Card>
+          <Toolbar sx={{ backgroundColor: "#261973" }}>
+            <Typography
+              variant="h6"
+              noWrap
+              sx={{ color: "white" }}
+            >
+              {displayName}
+            </Typography>
+          </Toolbar>
+        </Card>
         <Divider />
 
         <List>
-          {notes?.map((note) => (
+          {notes.map((note) => (
             <SideBarItem
               id={note.id}
               key={note.id}

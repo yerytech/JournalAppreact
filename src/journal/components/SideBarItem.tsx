@@ -1,5 +1,6 @@
 import { TurnedInNot } from "@mui/icons-material";
 import {
+  Card,
   Grid2,
   ListItem,
   ListItemButton,
@@ -31,19 +32,22 @@ export const SideBarItem = ({ title, body, id, date, imageUrls }: SBIProp) => {
   }, [body]);
 
   return (
-    <ListItem disablePadding>
-      <ListItemButton onClick={onClickNote}>
-        <ListItemIcon>
-          <TurnedInNot />
-          <Grid2
-            container
-            direction="column"
-          >
-            <ListItemText primary={newTitle} />
-            <ListItemText secondary={newBody} />
-          </Grid2>
-        </ListItemIcon>
-      </ListItemButton>
-    </ListItem>
+    <Card sx={{ margin: 1, backgroundColor: "#FFA438" }}>
+      <ListItem disablePadding>
+        <ListItemButton onClick={onClickNote}>
+          <ListItemIcon>
+            <TurnedInNot />
+            <Grid2
+              color="ActiveBorder"
+              container
+              direction="column"
+            >
+              <ListItemText primary={newTitle} />
+              <ListItemText secondary={newBody} />
+            </Grid2>
+          </ListItemIcon>
+        </ListItemButton>
+      </ListItem>
+    </Card>
   );
 };
