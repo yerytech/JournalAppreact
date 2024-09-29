@@ -12,15 +12,16 @@ export const checkingAutentication = (email, password) => {
   return async (dispatch) => {
     dispatch(chekingCredentials());
     // @ts-ignore
-    const result = signInWithEmailAndPassword(email, password);
-    console.log(result);
+    // const result = signInWithEmailAndPassword(email, password);
   };
 };
 
 export const startGoogleSingIn = () => {
   return async (dispatch) => {
     dispatch(chekingCredentials());
+
     const result = await singInWithGoogle();
+
     if (!result.ok) return dispatch(logaut(result.errorMessage));
     dispatch(login(result));
   };
@@ -45,7 +46,6 @@ export const startLoginEmailPassword = ({ email, password }) => {
   return async (dispatch) => {
     dispatch(chekingCredentials());
     const result = await singInEmailPassword({ email, password });
-    console.log(result);
 
     if (!result.ok) return dispatch(logaut(result));
     dispatch(login(result));

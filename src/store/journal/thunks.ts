@@ -11,7 +11,7 @@ import {
   updateNote,
 } from "./journalSlice";
 import { fileUpload, loadNotes } from "../../helpers";
-import { string } from "prop-types";
+
 
 interface NewNoteProps {
   id?: string;

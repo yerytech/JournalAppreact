@@ -17,6 +17,7 @@ import {
   startLoginEmailPassword,
 } from "../../store/auth";
 import { useMemo } from "react";
+
 const formData = {
   email: "",
   password: "",
@@ -25,6 +26,8 @@ export const LoginPage = () => {
   // @ts-ignore
   const { status, errorMessage } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  // @ts-ignore
 
   // @ts-ignore
   const { email, password, onInputChange } = useForm(formData);
