@@ -8,12 +8,13 @@ import {
   authenticatedState,
   demouser,
   initialState,
+  initState,
 } from "../../fixtures/authFixture";
 
 describe("Prueba en el authSlice", () => {
   test("Debe regresar el estado inicial y llamarse auth ", () => {
     expect(authSlice.name).toBe("auth");
-    const state = authSlice.reducer(initialState, {});
+    const state = authSlice.reducer(initState, {});
 
     expect(state).toEqual(initialState);
   });

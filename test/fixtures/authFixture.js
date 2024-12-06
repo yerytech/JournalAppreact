@@ -6,6 +6,17 @@ export const initialState = {
   photoUrl: null,
   errorMessage: null,
 };
+
+export const initState = {
+  status: "checking", //"checking", //'not-authenticated','aythenticated'
+  uid: null,
+  email: null,
+  displayName: null,
+  photoUrl: null,
+  errorMessage: null,
+};
+
+
 export const authenticatedState = {
   status: "authenticated", //"checking", //'not-authenticated','aythenticated'
   uid: "123456",
